@@ -1,0 +1,32 @@
+const nfts = [];
+
+function mintNFT(name, description, rarity) {
+  const nft = {
+    name: name,
+    description: description,
+    rarity: rarity
+  };
+
+  nfts.push(nft);
+}
+
+function listNFTs() {
+  for (const nft of nfts) {
+    console.log("Name: " + nft.name);
+    console.log("Description: " + nft.description);
+    console.log("Rarity: " + nft.rarity);
+    console.log("------------------------");
+  }
+}
+
+function getTotalSupply() {
+  return nfts.length;
+}
+
+mintNFT("NFT 1", "Description 1", "Common");
+mintNFT("NFT 2", "Description 2", "Rare");
+mintNFT("NFT 3", "Description 3", "Epic");
+
+listNFTs();
+
+console.log("Total Supply: " + getTotalSupply());
