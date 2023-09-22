@@ -1,0 +1,19 @@
+pragma solidity ^0.8.0;
+
+contract ErrorHandlingExample {
+    uint256 public value;
+
+    function setValue(uint256 _newValue) public {
+        require(_newValue > 0, "Value must be greater than zero");
+        value = _newValue;
+    }
+
+    function assertExample(uint256 a, uint256 b) public pure returns (uint256) {
+        assert(a >= b);
+        return a - b;
+    }
+
+    function revertExample() public pure {
+        revert("This function always reverts");
+    }
+}
