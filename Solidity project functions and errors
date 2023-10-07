@@ -1,19 +1,42 @@
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
 
-contract ErrorHandlingExample {
+contract ExceptionHandlingDemo {
+    address public owner;
     uint256 public value;
+    mapping(address => uint256) public balances;
 
-    function setValue(uint256 _newValue) public {
-        require(_newValue > 0, "Value must be greater than zero");
-        value = _newValue;
+    constructor() {
+        owner = msg.sender;
     }
 
-    function assertExample(uint256 a, uint256 b) public pure returns (uint256) {
-        assert(a >= b);
-        return a - b;
+    function deposit(uint256 amount) public {
+        require(msg.sender != owner, "Owner cannot deposit");
+        value += amount;
+        balances[msg.sender] += amount;
     }
 
-    function revertExample() public pure {
-        revert("This function always reverts");
+    function withdraw(uint256 amount) public {
+        require(msg.sender != owner, "Owner cannot withdraw");
+        require(balances[msg.sender] >= amount, "Insufficient balance");
+        balances[msg.sender] -= amount;
+        value -= amount;
+    }
+
+    function assertExample(uint256 x) public pure returns (uint256) {
+        assert(x != 0);
+        return x;
+    }
+
+    function requireExample(uint256 x) public pure returns (uint256) {
+        require(x != 0, "Input must be non-zero");
+        return x;
+    }
+
+    function revertExample(uint256 x) public pure returns (uint256) {
+        if (x == 0) {
+            revert("Input cannot be zero");
+        }
+        return x;
     }
 }
