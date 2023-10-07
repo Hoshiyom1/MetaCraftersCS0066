@@ -2,8 +2,8 @@
 pragma solidity ^0.8.18;
 
 contract MyToken {
-    string public coinName = "MYCOIN";
-    string public coinSymbol = "MYC";
+    string public coinName = "MYPRECIOUS";
+    string public coinSymbol = "MYP";
     uint public totalCoinSupply = 0;
     
     mapping(address => uint) public balances;
