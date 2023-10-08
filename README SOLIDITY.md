@@ -49,7 +49,7 @@ contract MyToken {
 
 ```
 
-##To compile the code, follow these steps:
+### To compile the code, follow these steps:
 
 
 1.) Go to the "Solidity Compiler" tab located in the left-hand sidebar.
@@ -58,7 +58,7 @@ contract MyToken {
 
 3.) Click on the "Compile Solidity.sol" button to compile the code.
 
-##Once the code is successfully compiled, proceed to deploy the contract as follows:
+### Once the code is successfully compiled, proceed to deploy the contract as follows:
 
 1.)Click on the "Deploy & Run Transactions" tab in the left-hand sidebar.
 
@@ -66,7 +66,7 @@ contract MyToken {
 
 3.)Click the "Deploy" button to initiate the deployment process.
 
-##After deploying the contract, you can interact with its two primary functions:
+### After deploying the contract, you can interact with its two primary functions:
 
 1.)Use "burn" to subtract Ethereum (ETH) assets.
 
