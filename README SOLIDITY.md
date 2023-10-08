@@ -1,10 +1,18 @@
-# SOLIDITY
+# Simple Token Contract Project
+This project aims to create a simple program that will do the following with said features: (for educational purposes only)
 
-This solidity program was created for educational purposes only!
+### Key Features:
+
+- **Token Name:** This contract represents an example token with the name "ExampleToken."
+- **Token Symbol:** The token is identified by the symbol "EXT."
+- **Token Balances:** It keeps track of user balances using a mapping that associates addresses with token amounts.
+- **Mint Function:** The `mint` function allows adding tokens to a user's balance, increasing the total token supply.
+- **Burn Function:** The `burn` function subtracts tokens from a user's balance and decreases the total token supply when the user has enough tokens.
+
 
 ## Description
 
-This program is a simple contract written in Solidity, a programming language used for developing smart contracts on the Ethereum blockchain. The contract has two main fucntions, to mint and burn, basically will add and subract things.
+This Solidity program is a simple smart contract for educational purposes, focusing on two core functions: minting (adding) and burning (subtracting) assets. It serves as a practical example for learning about Ethereum smart contract development.
 
 ## Getting Started
 
@@ -14,7 +22,7 @@ To run this program, you can use Remix, an online Solidity IDE. To get started, 
 
 Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the following code into the file:
 
-```javascript
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
