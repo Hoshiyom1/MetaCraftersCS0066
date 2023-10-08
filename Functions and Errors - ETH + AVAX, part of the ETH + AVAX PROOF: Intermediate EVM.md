@@ -22,7 +22,7 @@ contract Crowdfunding {
     address public owner;
     uint256 public fundingGoal;
     uint256 public deadline;
-    mapping(address => uint256) public contributions;
+    mapping(address => uint256) public CONTRIBUTIONS;
     bool public fundingGoalReached;
     bool public crowdfundingClosed;
 
@@ -47,40 +47,40 @@ contract Crowdfunding {
         _;
     }
 
-    function contribute() public payable beforeDeadline {
+    function CONTRIBUTE() public payable beforeDeadline {
         require(msg.value > 0, "Contribution must be greater than 0 ether.");
-        contributions[msg.sender] += msg.value;
+        CONTRIBUTIONS[msg.sender] += msg.value;
 
         if (address(this).balance >= fundingGoal) {
             fundingGoalReached = true;
         }
     }
 
-    function closeCrowdfunding() public onlyOwner {
+    function CLOSE_CROWD_FUNDING() public onlyOwner {
         crowdfundingClosed = true;
     }
 
-    function withdrawFunds() public onlyOwner afterDeadline {
+    function WITHDRAW_FUNDS() public onlyOwner afterDeadline {
         require(fundingGoalReached, "Funding goal not reached.");
         payable(owner).transfer(address(this).balance);
     }
 
-    function refund() public beforeDeadline {
+    function REFUND_FUNDS() public beforeDeadline {
         require(crowdfundingClosed, "Crowdfunding is still open.");
         require(!fundingGoalReached, "Funding goal has been reached.");
 
-        uint256 contribution = contributions[msg.sender];
+        uint256 contribution = CONTRIBUTIONS[msg.sender];
         require(contribution > 0, "No contribution to refund.");
-        contributions[msg.sender] = 0;
+        CONTRIBUTIONS[msg.sender] = 0;
         require(payable(msg.sender).send(contribution), "Refund failed.");
     }
 
-    function assertExample(uint256 a, uint256 b) public pure returns (uint256) {
+    function ASSERT_EXAMPLE(uint256 a, uint256 b) public pure returns (uint256) {
         assert(a + b > a);  // This should always be true, otherwise, it's a critical bug.
         return a + b;
     }
 
-    function revertExample(uint256 x) public pure returns (string memory) {
+    function REVERT_EXAMPLE(uint256 x) public pure returns (string memory) {
         require(x >= 10, "Value must be greater than or equal to 10.");
         if (x < 20) {
             revert("Value must be greater than or equal to 20.");
@@ -88,6 +88,7 @@ contract Crowdfunding {
         return "Operation successful.";
     }
 }
+
 
 
 
