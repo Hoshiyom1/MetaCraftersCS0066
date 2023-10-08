@@ -14,49 +14,81 @@ To run this program, you can use Remix, an online Solidity IDE. To get started, 
 
 Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the following code into the file:
 
-```javascript
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-contract ExceptionHandlingDemo {
+contract Crowdfunding {
     address public owner;
-    uint256 public value;
-    mapping(address => uint256) public balances;
+    uint256 public fundingGoal;
+    uint256 public deadline;
+    mapping(address => uint256) public contributions;
+    bool public fundingGoalReached;
+    bool public crowdfundingClosed;
 
-    constructor() {
+    constructor(uint256 _goalInEther) {
         owner = msg.sender;
+        fundingGoal = _goalInEther * 1 ether;
+        deadline = block.timestamp + 30 days; 
     }
 
-    function deposit(uint256 amount) public {
-        require(msg.sender != owner, "Owner cannot deposit");
-        value += amount;
-        balances[msg.sender] += amount;
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function.");
+        _;
     }
 
-    function withdraw(uint256 amount) public {
-        require(msg.sender != owner, "Owner cannot withdraw");
-        require(balances[msg.sender] >= amount, "Insufficient balance");
-        balances[msg.sender] -= amount;
-        value -= amount;
+    modifier beforeDeadline() {
+        require(block.timestamp < deadline, "The crowdfunding deadline has passed.");
+        _;
     }
 
-    function assertExample(uint256 x) public pure returns (uint256) {
-        assert(x != 0);
-        return x;
+    modifier afterDeadline() {
+        require(block.timestamp >= deadline, "The crowdfunding deadline has not passed yet.");
+        _;
     }
 
-    function requireExample(uint256 x) public pure returns (uint256) {
-        require(x != 0, "Input must be non-zero");
-        return x;
-    }
+    function contribute() public payable beforeDeadline {
+        require(msg.value > 0, "Contribution must be greater than 0 ether.");
+        contributions[msg.sender] += msg.value;
 
-    function revertExample(uint256 x) public pure returns (uint256) {
-        if (x == 0) {
-            revert("Input cannot be zero");
+        if (address(this).balance >= fundingGoal) {
+            fundingGoalReached = true;
         }
-        return x;
+    }
+
+    function closeCrowdfunding() public onlyOwner {
+        crowdfundingClosed = true;
+    }
+
+    function withdrawFunds() public onlyOwner afterDeadline {
+        require(fundingGoalReached, "Funding goal not reached.");
+        payable(owner).transfer(address(this).balance);
+    }
+
+    function refund() public beforeDeadline {
+        require(crowdfundingClosed, "Crowdfunding is still open.");
+        require(!fundingGoalReached, "Funding goal has been reached.");
+
+        uint256 contribution = contributions[msg.sender];
+        require(contribution > 0, "No contribution to refund.");
+        contributions[msg.sender] = 0;
+        require(payable(msg.sender).send(contribution), "Refund failed.");
+    }
+
+    function assertExample(uint256 a, uint256 b) public pure returns (uint256) {
+        assert(a + b > a);  // This should always be true, otherwise, it's a critical bug.
+        return a + b;
+    }
+
+    function revertExample(uint256 x) public pure returns (string memory) {
+        require(x >= 10, "Value must be greater than or equal to 10.");
+        if (x < 20) {
+            revert("Value must be greater than or equal to 20.");
+        }
+        return "Operation successful.";
     }
 }
+
 
 
 
