@@ -1,18 +1,22 @@
 # Functions and Errors - ETH + AVAX, part of the ETH + AVAX PROOF: 
 
-This solidity program was created for educational purposes only!
+This Solidity program, part of the ETH + AVAX PROOF series, is designed for educational purposes.
 
 ## Description
 
-This program is a simple contract written in Solidity, a programming language used for developing smart contracts on the Ethereum blockchain. This program has 2 main function the withdraw and deposit, but has alot of conditionals such as the owner must not be able to withdraw or deposit becuase its the owner basically. Other than those there are also asserts to have example scenarios etc. And lastly if it is inputted 0 it would revert.
+The Solidity programming language, which is primarily used to generate smart contracts for the Ethereum blockchain, is demonstrated here in the form of a simple smart contract. There are two major functions in the contract: "withdraw" and "deposit," both of which have different restrictions. In particular, because the owner's position is exclusive, the contract forbids the owner from making withdrawals or deposits. The code also uses "asserts" and "reverts" illustratively to demonstrate various error-handling scenarios. Notably, a contract reversal occurs for any input of 0. 
 
 ## Getting Started
 
-### Executing program
+### Running program
 
-To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
+To execute this program, Remix, an online Solidity Integrated Development Environment (IDE), is recommended. Here's how to begin:
 
-Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the following code into the file:
+1.) Visit the Remix website at Remix Ethereum.
+
+2.) On the Remix website, create a new file by clicking the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., Crowdfunding.sol).
+
+3.) Copy and paste the provided Solidity code into the file.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -95,11 +99,11 @@ contract Crowdfunding {
 
 ```
 
-To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.18" (or another compatible version), and then click on the "Compile functionsanderrors.sol" button.
+1.) Compile the code by accessing the "Solidity Compiler" tab in the left-hand sidebar. Ensure the "Compiler" option is set to "0.8.18" (or another compatible version), and then click the "Compile functionsanderrors.sol" button.
 
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "ExceptionHandlingDemo" contract from the dropdown menu, and then click on the "Deploy" button.
+2.) After successful compilation, deploy the contract by clicking the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "ExceptionHandlingDemo" contract from the dropdown menu, and click the "Deploy" button.
 
-Once the contract is deployed, you can interact with the program as you see fit.
+3.) Once the contract is deployed, you are free to interact with the program as desired.
 
 ## Authors
 
