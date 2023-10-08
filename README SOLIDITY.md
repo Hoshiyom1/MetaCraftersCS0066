@@ -49,11 +49,26 @@ contract MyToken {
 
 ```
 
-To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.18" (or another compatible version), and then click on the "Compile Solidity.sol" button.
+To compile the code, follow these steps:
 
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "Solidity" contract from the dropdown menu, and then click on the "Deploy" button.
+Go to the "Solidity Compiler" tab located in the left-hand sidebar.
 
-Once the contract is deployed, you can interact with the two main functions in there, the burn to basically burn eth (subract) and mint to basically add things (on a surface level).
+Ensure that the "Compiler" option is set to "0.8.18" (or a compatible version).
+
+Click on the "Compile Solidity.sol" button to compile the code.
+
+Once the code is successfully compiled, proceed to deploy the contract as follows:
+
+Click on the "Deploy & Run Transactions" tab in the left-hand sidebar.
+
+From the dropdown menu, select the "Solidity" contract.
+
+Click the "Deploy" button to initiate the deployment process.
+
+After deploying the contract, you can interact with its two primary functions:
+
+Use "burn" to subtract Ethereum (ETH) assets.
+Use "mint" to add assets, keeping interactions at a high-level for simplicity.
 
 ## Authors
 
