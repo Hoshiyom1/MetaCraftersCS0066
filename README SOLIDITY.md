@@ -3,7 +3,7 @@ This project aims to create a simple program that will do the following with sai
 
 ### Key Features:
 
-- **Token Name:** This contract represents an example token with the name "ExampleToken."
+- **Token Name:** This contract represents an token with the name "MYPRECIOUS."
 - **Token Symbol:** The token is identified by the symbol "MYP."
 - **Token Balances:** It keeps track of user balances using a mapping that associates addresses with token amounts.
 - **Mint Function:** The `mint` function allows adding tokens to a user's balance, increasing the total token supply.
